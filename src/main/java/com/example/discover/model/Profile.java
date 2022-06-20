@@ -1,17 +1,16 @@
 package com.example.discover.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class Profile implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
+    @Column(unique=true)
     private String cardNumber;
     private int points;
 
@@ -21,6 +20,14 @@ public class Profile implements Serializable {
         this.name = name;
         this.cardNumber = cardNumber;
         this.points = points;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

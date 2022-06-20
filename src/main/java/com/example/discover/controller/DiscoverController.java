@@ -14,8 +14,8 @@ public class DiscoverController {
         this.discoverService = discoverService;
     }
 
-    @GetMapping("/retrieveprofile")
-    public ResponseEntity<Profile> getProfile(@RequestBody String cardNumber) {
+    @GetMapping("/retrieveprofile/{cardNumber}")
+    public ResponseEntity<Profile> getProfile(@PathVariable("cardNumber") String cardNumber) {
         Profile profile = discoverService.findProfileByCardNumber(cardNumber);
         return new ResponseEntity<>(profile, HttpStatus.OK);
     }
